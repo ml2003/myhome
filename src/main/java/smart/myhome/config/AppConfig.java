@@ -1,5 +1,6 @@
 package smart.myhome.config;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;

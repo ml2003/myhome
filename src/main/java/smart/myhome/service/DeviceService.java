@@ -16,10 +16,6 @@ public class DeviceService {
     private final DeviceRepository deviceRepository;
     private final ModelMapper modelMapper;
 
-//    public DeviceService(DeviceRepository deviceRepository, ModelMapper modelMapper) {
-//        this.deviceRepository = deviceRepository;
-//        this.modelMapper = modelMapper;
-//    }
 
     public Device findById(long id) throws DeviceNotFoundException {
         Optional<Device> oDevice = deviceRepository.findById(id);

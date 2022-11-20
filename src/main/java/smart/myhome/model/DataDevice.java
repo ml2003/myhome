@@ -15,6 +15,11 @@ public class DataDevice implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paramlink")
+    private DeviceParamLink deviceParamLink;
+
+
     @Column(name = "md5stamp")
     private String md5stamp;
 
@@ -77,5 +82,13 @@ public class DataDevice implements Serializable {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public DeviceParamLink getDeviceParamLink() {
+        return deviceParamLink;
+    }
+
+    public void setDeviceParamLink(DeviceParamLink deviceParamLink) {
+        this.deviceParamLink = deviceParamLink;
     }
 }

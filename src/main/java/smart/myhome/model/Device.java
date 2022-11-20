@@ -1,11 +1,13 @@
 package smart.myhome.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "device")
-public class Device  implements Serializable  {
+public class Device    {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

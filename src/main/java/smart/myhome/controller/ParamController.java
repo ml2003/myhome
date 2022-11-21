@@ -3,6 +3,7 @@ package smart.myhome.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 import smart.myhome.dto.DeviceDto;
 import smart.myhome.dto.ParamDto;
@@ -14,9 +15,10 @@ import java.util.List;
 @RequestMapping(path = "/api/params",
         produces = "application/json")
 @Tag(name = "Параметры", description = "Параметры с данными")
+@Data
 public class ParamController {
 
-    private ParamService paramService;
+    private final ParamService paramService;
 
    @GetMapping("/all")
    @Operation(summary = "Получение всех параметров", description = "Позволяет получить все параметры")

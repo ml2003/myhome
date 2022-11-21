@@ -12,6 +12,6 @@ public class HomespaceDto implements Serializable {
 
     private Long id;
     private String nameHomespace;
-    private List<Device> devicespace;
+    private List<DeviceDto> devicespace;
 
 }

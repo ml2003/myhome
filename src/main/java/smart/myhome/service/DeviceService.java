@@ -32,4 +32,26 @@ public class DeviceService {
         }
        return modelMapper.map(oDevice.get(), DeviceDto.class);
     }
+
+    public DeviceDto createDeviceFromDto (DeviceDto dto) throws Exception{
+         Device device = convertToEntity(dto);
+           deviceRepository.save(device);
+           DeviceDto returnedDto = devToDto(device.getId());
+           if (returnedDto == null) {
+               throw new DeviceNotFoundException();
+           }
+           return returnedDto;
+    }
+
+    private Device convertToEntity (DeviceDto deviceDto) throws Exception {
+       try {
+      Device device= modelMapper.map(deviceDto, Device.class);
+           return device;
+       } catch (Exception e) {
+           throw new DeviceNotFoundException();
+       }
+
+    }
+
+
 }

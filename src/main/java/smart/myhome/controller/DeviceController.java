@@ -18,26 +18,22 @@ import java.util.List;
 @Tag(name = "Устройства", description = "mqtt устройства, отправляющие данные")
 public class DeviceController {
 
-    private DeviceService deviceService;
+    private final DeviceService deviceService;
 
     public DeviceController(DeviceService deviceService) {
         this.deviceService = deviceService;
     }
 
-    //  @GetMapping(params = "/all")
-//  public ResponseEntity<List<DeviceDto>> getAllDevices() throws Exception {
-//        return  deviceService.findAll();
-//    }
     @GetMapping("/{id}")
     @Operation(summary = "Получение устройства по ИД", description = "Позволяет получить устройство по ИД")
     public DeviceDto getDevDtoById(@PathVariable @Parameter(description = "идентификатор устройства") long id) throws Exception {
         return deviceService.devToDto(id);
     }
 
-//    @PostMapping(consumes="application/json")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Device postDeviceDto (@RequestBody Device device){
-//        return deviceService.save(device);
-//    }
+    @PostMapping(consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public DeviceDto postDeviceDto(@RequestBody DeviceDto deviceDto) throws Exception {
+        return deviceService.createDeviceFromDto(deviceDto);
+    }
 
 }

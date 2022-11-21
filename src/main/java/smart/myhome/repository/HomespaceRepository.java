@@ -11,4 +11,9 @@ public interface HomespaceRepository  extends JpaRepository<HomeSpace, Long> {
     @Override
     List<HomeSpace> findAll();
 
+    @Override
+    <S extends HomeSpace> S save(S entity);
+
+    @Override
+    void deleteById(Long aLong);
 }

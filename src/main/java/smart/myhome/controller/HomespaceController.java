@@ -12,32 +12,34 @@ import java.util.List;
 
 @RestController
 @Data
+@RequestMapping(path = "/api/homespace",
+        produces = "application/json")
 @Tag(name = "Комнаты", description = "Комнаты для устройств")
 public class HomespaceController {
     private final HomespaceService homespaceService;
 
 
-    @GetMapping("/api/homespace/all")
+    @GetMapping("/all")
     @Tag(name = "Комнаты", description = "Получить все комнаты")
     public List<HomespaceDto> getHome() throws Exception {
         return homespaceService.returnAllHomespace();
     }
 
 
-    @GetMapping("/api/homespace/{id}")
+    @GetMapping("/{id}")
     @Tag(name = "Комнаты", description = "Получить комнату по ИД")
     public HomespaceDto getHomeById(@PathVariable Long id) throws Exception {
         return homespaceService.homeToDto(id);
     }
 
-    @PostMapping(path = "/homespace/add", consumes = "application/json")
+    @PostMapping(path = "/add", consumes = "application/json")
     @Tag(name = "Комнаты", description = "Создать новую комнату")
     @ResponseStatus(HttpStatus.CREATED)
     public HomespaceDto postHomespaceDto(@RequestBody HomespaceDto homespaceDto) throws Exception {
         return homespaceService.createHomespaceFromDto(homespaceDto);
     }
 
-    @PutMapping(path = "/homespace/{id}", consumes = "application/json")
+    @PutMapping(path = "/{id}", consumes = "application/json")
     @Tag(name = "Комнаты", description = "Обновить комнату по ИД")
     public HomespaceDto putHomespace(
             @PathVariable("id") Long id,
@@ -45,7 +47,7 @@ public class HomespaceController {
         return homespaceService.putFromDto(homespaceDto);
     }
 
-    @DeleteMapping(path = "/homespace/{id}", consumes = "application/json")
+    @DeleteMapping(path = "/{id}", consumes = "application/json")
     @Tag(name = "Комнаты", description = "Удалить комнату по ИД")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteHomespace(@PathVariable("id") Long id) {

@@ -26,10 +26,7 @@ public class HomespaceService {
         List<HomeSpace> all =  homespaceRepository.findAll();
 
         List<HomespaceDto> allDtos = modelMapper.map(all, new TypeToken<List<HomespaceDto>>(){}.getType());
-//        for (HomeSpace home: all
-//             ) {
-//            allDtos.add(modelMapper.map(home, HomespaceDto.class));
-//        }
+
         return allDtos;
     }
 
@@ -75,8 +72,8 @@ public class HomespaceService {
             return returnedDto;
     }
 
-    public void deleteById(Long homespaceDto){
-            homespaceRepository.deleteById(modelMapper.map(homespaceDto, HomeSpace.class).getId());
+    public void deleteById(Long id){
+            homespaceRepository.deleteById(id);
                 }
 
 }

@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 import smart.myhome.dto.DeviceDto;
+import smart.myhome.dto.HomespaceDto;
 import smart.myhome.dto.ParamDto;
 import smart.myhome.service.ParamService;
 
@@ -26,6 +27,7 @@ public class ParamController {
       return paramService.getALLParams();
    }
 
+
     @GetMapping("/{id}")
     @Operation(summary = "Получение параметра по ИД", description = "Позволяет получить параметр по ИД")
     public ParamDto getParamDtoById (@PathVariable @Parameter(description = "идентификатор параметра") long id)  throws Exception {
@@ -39,7 +41,5 @@ public class ParamController {
         return paramService.paramToDto(id);
     }
 
-//@PostMapping("/add")
-//@Operation(summary = "Создать параметр", description = "Позволяет добавить новый параметр")
-//public
+
 }
